@@ -8,5 +8,6 @@ namespace FiveGuys
   {
     void Draw();
     void Update();
+    void LoadContent();
   }
 }
