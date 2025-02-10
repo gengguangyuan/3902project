@@ -9,4 +9,4 @@ N to use attack 1\
 M to use attack 2\
 R to Reset\
 0 to Quit\
-Enter to Pause / Menu\
+Enter to Pause / Menu
