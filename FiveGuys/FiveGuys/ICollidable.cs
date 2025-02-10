@@ -11,6 +11,6 @@ namespace FiveGuys
 {
   public interface ICollidable
   {
-    
+    boolean isCollidable();
   }
 }
