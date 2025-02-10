@@ -8,9 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FiveGuys
-
-public interface ICommand
 {
-    void Execute();
-    void Undo();
+    public interface ICommand
+    {
+        void Execute();
+        void Undo();
+    }
 }
