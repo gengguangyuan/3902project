@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint0;
 
 namespace FiveGuys
 {
@@ -12,7 +11,7 @@ namespace FiveGuys
         private KeyboardController keyboardController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        LinkSprite linkSprite;
+        linkAnimation linkSprite;
 
         public Game1()
         {
@@ -34,9 +33,9 @@ namespace FiveGuys
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            Texture2D texture = Content.Load<Texture2D>("Link");
+            Texture2D texture = Content.Load<Texture2D>("linkSheet");
             Vector2 position = new Vector2(Window.ClientBounds.Width / 2 , Window.ClientBounds.Height / 2);
-            linkSprite = new LinkSprite(texture, position);
+            linkSprite = new linkAnimation(texture, position);
         }
         
 
