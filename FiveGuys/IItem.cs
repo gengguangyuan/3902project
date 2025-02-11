@@ -11,9 +11,10 @@ namespace FiveGuys
 {
   public interface IItem
   {
-    void Get();
-    void Use();
+        void Use();
+        void Draw(SpriteBatch spriteBatch);
+        void Update(GameTime gameTime);
+        Vector2 Position { get; set; }
 
-        //test
-  }
+    }
 }
