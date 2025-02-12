@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Reflection.Metadata;
+using Microsoft.Xna.Framework.Content;
 
-namespace FiveGuys
+namespace FiveGuys.Animation
 {
-    internal class spriteAnimation
+    public class Sprite : ISprite
     {
         protected int currentFrame;
         protected int totalFrames;
@@ -21,26 +23,17 @@ namespace FiveGuys
         protected double timeElapsed;
         public Texture2D texture { get; private set; }
         public Vector2 position { get; private set; }
+        public Vector2 origin;
+        Rectangle sourceRect;
 
         public void setPosition(Vector2 newPos)
         {
             position = newPos;
         }
 
-        public Rectangle DestRect
-        {
-            get
-            {
-                return new Rectangle((int)position.X, (int)position.Y, width, height);
-            }
-        }
-
-        public Rectangle SourceRect
-        {
-            get
-            {
-                return new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
-            }
+        public void updateSourceRect(Rectangle newSourceRect) 
+        { 
+            sourceRect = newSourceRect;
         }
 
         public void Update(GameTime gt)
@@ -60,14 +53,27 @@ namespace FiveGuys
 
         }
 
-        public spriteAnimation(Texture2D texture, Vector2 position)
+        public void Draw(SpriteBatch _spriteBatch, Vector2 position)
+        {
+
+            Rectangle destRect = new Rectangle((int)position.X, (int)position.Y, width, height);
+            sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
+
+            _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, origin, SpriteEffects.None, 0f);
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+            texture = content.Load<Texture2D>("linkSheet");
+        }
+
+        public Sprite(Texture2D texture, Vector2 position)
         {
 
             this.texture = texture;
             this.position = position;
-            this.timeElapsed = 0;
-            this.currentFrame = 0;
-
+            timeElapsed = 0;
+            currentFrame = 0;
         }
     }
 }

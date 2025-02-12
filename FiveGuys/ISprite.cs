@@ -6,8 +6,8 @@ namespace FiveGuys
 {
   public interface ISprite
   {
-    void Draw();
-    void Update();
-    void LoadContent();
+    void Draw(SpriteBatch _spriteBatch, Vector2 position);
+    void Update(GameTime gt);
+    void LoadContent(ContentManager content);
   }
 }

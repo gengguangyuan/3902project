@@ -1,4 +1,5 @@
-﻿using FiveGuys.Controls;
+﻿using FiveGuys.Animation;
+using FiveGuys.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,7 +12,8 @@ namespace FiveGuys
         private KeyboardController keyboardController;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        linkAnimation linkSprite;
+        private Vector2 position;
+        private Sprite linkSprite;
 
         public Game1()
         {
@@ -27,15 +29,15 @@ namespace FiveGuys
             keyboardController = new KeyboardController(this);
             mouseController = new MouseController(this);
 
+            position = new Vector2(Window.ClientBounds.Width / 2 , Window.ClientBounds.Height / 2);
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            Texture2D texture = Content.Load<Texture2D>("linkSheet");
-            Vector2 position = new Vector2(Window.ClientBounds.Width / 2 , Window.ClientBounds.Height / 2);
-            linkSprite = new linkAnimation(texture, position);
+
         }
         
 
@@ -50,11 +52,11 @@ namespace FiveGuys
         {
             GraphicsDevice.Clear(Color.LightGoldenrodYellow);
 
-
             _spriteBatch.Begin();
-            _spriteBatch.Draw(linkSprite.texture, linkSprite.DestRect, linkSprite.SourceRect, Color.White);
-            _spriteBatch.End();
 
+            linkSprite.Draw(_spriteBatch, position);
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
