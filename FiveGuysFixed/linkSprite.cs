@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FiveGuys
+namespace FiveGuysFixed
 {
     public class linkSprite
     {

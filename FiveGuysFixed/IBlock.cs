@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiveGuys
+namespace FiveGuysFixed
 {
   public interface IBlock
   {
-    boolean IsCollidable();
+    bool IsCollidable();
   }
 }

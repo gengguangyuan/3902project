@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace FiveGuys
+namespace FiveGuysFixed
 {
     public class Potion : IItem
     {

@@ -10,6 +10,26 @@ namespace FiveGuysFixed.Animation
 {
     public class LinkWalkAnimation : Sprite
     {
+
+        private Rectangle sourceRect;
+
+        public new void Draw(SpriteBatch _spriteBatch, Vector2 position)
+        {
+
+            Rectangle destRect = new Rectangle((int)position.X, (int)position.Y, width, height);
+            sourceRect = new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height);
+
+
+            if (flipDirection)
+            {
+                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.FlipHorizontally, 0f);
+            }
+            else
+            {
+                _spriteBatch.Draw(texture, destRect, sourceRect, Color.White, 0, new Vector2(spriteLocationX, spriteLocationY), SpriteEffects.None, 0f);
+            }
+        }
+
         public void pickUp()
         {
             spriteLocationX = 212;
@@ -41,7 +61,6 @@ namespace FiveGuysFixed.Animation
             spriteLocationX = 0;
             spriteLocationY = 11;
             flipDirection = false;
-            updateSourceRect(new Rectangle(spriteLocationX + gap * (currentFrame + 1) + width * currentFrame, spriteLocationY, width, height));
         }
     }
 }

@@ -58,7 +58,7 @@ namespace FiveGuysFixed.Animation
         {
 
             Rectangle destRect = new Rectangle((int)position.X, (int)position.Y, width, height);
-            sourceRect = new Rectangle();
+            //sourceRect = new Rectangle();
 
 
             if (flipDirection)
